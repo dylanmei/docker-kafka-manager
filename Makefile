@@ -1,6 +1,6 @@
 image_name     := kafka-manager
 image_registry := dylanmei
-bin_version    := 1.3.2.1
+bin_version    := 1.3.3.6
 image_version  := $(bin_version)
 
 .PHONY: build/image tag/image push/image

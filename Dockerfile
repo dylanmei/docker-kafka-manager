@@ -23,9 +23,7 @@ RUN curl -sL --retry 3 --insecure \
   && ln -s $JAVA_HOME /usr/java \
   && rm -rf $JAVA_HOME/man
 
-# PICK UP KAFKA 0.10.x SUPPORT
-# FROM THIS PR: https://github.com/yahoo/kafka-manager/pull/282
-RUN git clone https://github.com/Innometrics/kafka-manager /usr/src/kafka-manager \
+RUN git clone https://github.com/yahoo/kafka-manager /usr/src/kafka-manager \
  && cd /usr/src/kafka-manager \
  && echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt \
  && ./sbt clean dist \

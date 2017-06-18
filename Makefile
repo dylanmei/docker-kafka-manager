@@ -1,7 +1,7 @@
-image_name     := kafka-manager
-image_registry := dylanmei
-bin_version    := 1.3.3.6
-image_version  := $(bin_version)
+image_name      := kafka-manager
+image_registry  := dylanmei
+release_version := 1.3.3.7
+image_version   := $(release_version)
 
 .PHONY: build/image tag/image push/image
 
@@ -9,6 +9,7 @@ build/image:
 	docker build \
 		--build-arg "http_proxy=$(http_proxy)" \
 		--build-arg "https_proxy=$(https_proxy)" \
+		--build-arg "release_version=$(release_version)" \
 		--tag $(image_name) .
 
 tag/image: build/image

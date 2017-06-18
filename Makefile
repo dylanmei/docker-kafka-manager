@@ -13,7 +13,9 @@ build/image:
 		--tag $(image_name) .
 
 tag/image: build/image
+	docker tag $(image_name) $(image_registry)/$(image_name):latest
 	docker tag $(image_name) $(image_registry)/$(image_name):$(image_version)
 
 push/image: tag/image
+	docker push $(image_registry)/$(image_name):latest
 	docker push $(image_registry)/$(image_name):$(image_version)

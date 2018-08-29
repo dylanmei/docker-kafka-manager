@@ -2,14 +2,14 @@ FROM openjdk:8-jdk
 
 ARG http_proxy
 ARG https_proxy
-ARG release_version
+ARG gitref
 
 RUN apt-get update \
  && apt-get install -y git curl unzip \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN git clone --branch "${release_version}" "https://github.com/yahoo/kafka-manager" /usr/src/kafka-manager \
+RUN git clone --branch "${gitref}" "https://github.com/yahoo/kafka-manager" /usr/src/kafka-manager \
  && cd /usr/src/kafka-manager \
  && echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt \
  && ./sbt clean dist \

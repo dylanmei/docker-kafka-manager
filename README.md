@@ -11,7 +11,7 @@ Run:
 docker run --rm -p 9000:9000 dylanmei/kafka-manager -Dkafka-manager.zkhosts=localhost:2181
 ```
 
-Run with basic auth and bump up the default timeouts
+Supply properties to configure Kafka-manager. For example, to run with basic-auth and increase the default timeouts:
 
 ```sh
 docker run --rm -p 9000:9000 \
@@ -27,3 +27,14 @@ docker run --rm -p 9000:9000 \
     -DbasicAuthentication.username=foo \
     -DbasicAuthentication.password=bar
 ```
+
+There are also ENV vars that will be interpolated in `/usr/kafka-manager/conf/application.conf`
+
+| ENV | config |
+|-----|--------|
+| ZK_HOSTS | kafka-manager.zkhosts |
+| CONSUMER_PROPERTIES_FILE | kafka-manager.consumer.properties.file |
+| APPLICATION_SECRET | play.crypto.secret |
+| KAFKA_MANAGER_AUTH_ENABLED | basicAuthentication.enabled |
+| KAFKA_MANAGER_USERNAME | basicAuthentication.username |
+| KAFKA_MANAGER_PASSWORD | basicAuthentication.password |

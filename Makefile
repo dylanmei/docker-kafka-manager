@@ -8,8 +8,6 @@ image_version  := 1.3.3.21
 
 build/image:
 	docker build \
-		--build-arg "http_proxy=$(http_proxy)" \
-		--build-arg "https_proxy=$(https_proxy)" \
 		--build-arg "gitref=$(gitref)" \
 		--tag $(image_name) .
 

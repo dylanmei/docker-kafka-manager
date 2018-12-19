@@ -1,7 +1,5 @@
 FROM openjdk:8-jdk
 
-ARG http_proxy
-ARG https_proxy
 ARG gitref
 
 RUN apt-get update \

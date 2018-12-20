@@ -10,7 +10,7 @@ RUN apt-get update \
 RUN git clone --branch "${gitref}" "https://github.com/yahoo/kafka-manager" /usr/src/kafka-manager \
  && cd /usr/src/kafka-manager \
  && echo 'scalacOptions ++= Seq("-Xmax-classfile-name", "200")' >> build.sbt \
- && ./sbt clean dist \
+ && ./sbt 'set test in Test := {}' clean dist \
  && unzip -d /usr/ ./target/universal/kafka-manager-*.zip \
  && ln -s "/usr/$(ls /usr/ | grep kafka-manager)" /usr/kafka-manager \
  && rm -rf /usr/src/kafka-manager /root/.sbt /root/.ivy2

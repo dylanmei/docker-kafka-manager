@@ -1,7 +1,7 @@
 image_name     := kafka-manager
 image_registry := dylanmei
 gitref         := master
-image_version  := 1.3.3.21
+image_version  := 1.3.3.22
 #image_version  := $(gitref)
 
 .PHONY: build/image tag/image push/image
